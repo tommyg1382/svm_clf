@@ -1,0 +1,1 @@
+wine.py implements and SVM classifier on the wine data set. This uses a 5-fold cross-validation to select values of Gamma and C.
