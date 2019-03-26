@@ -58,18 +58,28 @@ for GammaNdx in reversed(range(len(G))):
         Acc[Cndx, GammaNdx] = np.mean(RunAcc)        
         Dev[Cndx, GammaNdx] = np.mean(RunDev)
 
+MaxLoc = np.argmax(Acc)
+MaxLocTuple = np.unravel_index(MaxLoc, Acc.shape)
+print("Max Accuracy Location: ", MaxLoc)
+print("Max Val: ", Acc[MaxLocTuple])
+print("Standard Dev: ", Dev[MaxLocTuple])
+print("GAMMA: ", G[MaxLocTuple[1]])
+print("C: ", N[MaxLocTuple[0]])
+
+
+
 plt.figure()
 plt.imshow(Acc)
 plt.colorbar()
-plt.xlabel('C Index')
-plt.ylabel('Gamma Index')
-plt.savefig('Acc.png')
+plt.xlabel('Gamma Index')
+plt.ylabel('C Index')
+plt.savefig('Acc20.png')
 plt.figure()
 plt.imshow(Dev)
 plt.colorbar()
-plt.xlabel('C Index')
-plt.ylabel('Gamma Index')
-plt.savefig('Dev.png')
+plt.xlabel('Gamma Index')
+plt.ylabel('C Index')
+plt.savefig('Dev20.png')
 
 
 #psvmb.plotSVMBoundaries(X,y,clf) #clf.support_vectors_)
